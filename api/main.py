@@ -10,8 +10,8 @@ from typing import List, Optional
 
 from fastapi.middleware.cors import CORSMiddleware
 
-import alumnat as alumnat
-import db_alumnat as db_alumnat
+import alumnat
+import db_alumnat
 
 app = FastAPI()
 
@@ -136,9 +136,9 @@ async def load_alumnes(file: UploadFile = File(...)):
             Curs = int(i.get("Curs"))
             Grup = i.get("Grup")
 
-            idAula = db_alumnat.insert_aules(DescAula, Edifici, Pis)
+            IdAula = db_alumnat.insert_aules(DescAula, Edifici, Pis)
             
-            db_alumnat.insert_alumnes(NomAlumne, Cicle, Curs, Grup, idAula)
+            db_alumnat.insert_alumnes(NomAlumne, Cicle, Curs, Grup, IdAula)
         
         return {
             "resultat": json_data,
